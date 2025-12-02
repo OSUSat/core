@@ -37,13 +37,13 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: doxygen-documentation
-        path: eps/documentation/doxygen_output/
+        path: documentation/doxygen_output/
 
     - name: Upload Sphinx documentation
       uses: actions/upload-artifact@v4
       with:
         name: sphinx-documentation
-        path: eps/firmware/build/documentation/sphinx/
+        path: build/documentation/sphinx/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
