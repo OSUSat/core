@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ring Buffer Pow2 &#8212; OSUSat Core  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Event Bus" href="event_bus.html" />
+    <link rel="prev" title="Ring Buffer" href="ring_buffer.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ring-buffer-pow2">
+<h1>Ring Buffer Pow2<a class="headerlink" href="#ring-buffer-pow2" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__ring__buffer__pow2"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Fast</span> <span class="pre">Ring</span> <span class="pre">Buffer</span></span></dt>
+<dd><p>Bitmask-optimized circular buffer. </p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__ring__buffer__pow2__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Structures</span></span></dt>
+<dd><p>Structures used by the Fast Ring Buffer. </p>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425osusat_ring_buffer_pow2_t">
+<span id="_CPPv325osusat_ring_buffer_pow2_t"></span><span id="_CPPv225osusat_ring_buffer_pow2_t"></span><span id="osusat_ring_buffer_pow2_t"></span><span class="target" id="structosusat__ring__buffer__pow2__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></span><a class="headerlink" href="#_CPPv425osusat_ring_buffer_pow2_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;ring_buffer_pow2.h&gt;</em></div>
+<p>Fast ring buffer state structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25osusat_ring_buffer_pow2_t6bufferE">
+<span id="_CPPv3N25osusat_ring_buffer_pow2_t6bufferE"></span><span id="_CPPv2N25osusat_ring_buffer_pow2_t6bufferE"></span><span id="osusat_ring_buffer_pow2_t::buffer__uint8_tP"></span><span class="target" id="structosusat__ring__buffer__pow2__t_1ab829c44f842b492837cc07bc32c098ff"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buffer</span></span></span><a class="headerlink" href="#_CPPv4N25osusat_ring_buffer_pow2_t6bufferE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pointer to the underlying storage array </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25osusat_ring_buffer_pow2_t8capacityE">
+<span id="_CPPv3N25osusat_ring_buffer_pow2_t8capacityE"></span><span id="_CPPv2N25osusat_ring_buffer_pow2_t8capacityE"></span><span id="osusat_ring_buffer_pow2_t::capacity__s"></span><span class="target" id="structosusat__ring__buffer__pow2__t_1a6a6820b3a7bbe15f8cb72d6a6aa20cca"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capacity</span></span></span><a class="headerlink" href="#_CPPv4N25osusat_ring_buffer_pow2_t8capacityE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Total size (MUST be power of two) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25osusat_ring_buffer_pow2_t4maskE">
+<span id="_CPPv3N25osusat_ring_buffer_pow2_t4maskE"></span><span id="_CPPv2N25osusat_ring_buffer_pow2_t4maskE"></span><span id="osusat_ring_buffer_pow2_t::mask__s"></span><span class="target" id="structosusat__ring__buffer__pow2__t_1aab1daf93b8c2f72708a6988a17ff3a14"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mask</span></span></span><a class="headerlink" href="#_CPPv4N25osusat_ring_buffer_pow2_t4maskE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pre-calculated mask (capacity - 1) for fast wrapping </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25osusat_ring_buffer_pow2_t4headE">
+<span id="_CPPv3N25osusat_ring_buffer_pow2_t4headE"></span><span id="_CPPv2N25osusat_ring_buffer_pow2_t4headE"></span><span id="osusat_ring_buffer_pow2_t::head__s"></span><span class="target" id="structosusat__ring__buffer__pow2__t_1a1241199b416b62a91b8d97b22d25ae52"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><a class="headerlink" href="#_CPPv4N25osusat_ring_buffer_pow2_t4headE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Write index </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25osusat_ring_buffer_pow2_t4tailE">
+<span id="_CPPv3N25osusat_ring_buffer_pow2_t4tailE"></span><span id="_CPPv2N25osusat_ring_buffer_pow2_t4tailE"></span><span id="osusat_ring_buffer_pow2_t::tail__s"></span><span class="target" id="structosusat__ring__buffer__pow2__t_1a3c217f5f24b71a06f8cee314644454f2"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tail</span></span></span><a class="headerlink" href="#_CPPv4N25osusat_ring_buffer_pow2_t4tailE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Read index </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__ring__buffer__pow2__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for the Fast Ring Buffer. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414osusat_is_pow26size_t">
+<span id="_CPPv314osusat_is_pow26size_t"></span><span id="_CPPv214osusat_is_pow26size_t"></span><span id="osusat_is_pow2__s"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1ga620f28279600662b6e71a338a5b8aeca"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_is_pow2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414osusat_is_pow26size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Utility to check if a number is a power of two. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – <strong>[in]</strong> The number to check. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if x is a power of two, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428osusat_ring_buffer_pow2_initP25osusat_ring_buffer_pow2_tP7uint8_t6size_t">
+<span id="_CPPv328osusat_ring_buffer_pow2_initP25osusat_ring_buffer_pow2_tP7uint8_t6size_t"></span><span id="_CPPv228osusat_ring_buffer_pow2_initP25osusat_ring_buffer_pow2_tP7uint8_t6size_t"></span><span id="osusat_ring_buffer_pow2_init__osusat_ring_buffer_pow2_tP.uint8_tP.s"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1gaccf6d4a50d77d7607c1e8fb534040d30"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">storage</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">capacity</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428osusat_ring_buffer_pow2_initP25osusat_ring_buffer_pow2_tP7uint8_t6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the optimized ring buffer. </p>
+<p>Calculates the bitmask based on the provided capacity.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">capacity</span></code> MUST be a power of two (e.g., 32, 64, 128). If a non-power-of-two is provided, initialization will fail.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rb</strong> – <strong>[out]</strong> Pointer to the ring buffer handle. </p></li>
+<li><p><strong>storage</strong> – <strong>[in]</strong> Pointer to the allocated byte array. </p></li>
+<li><p><strong>capacity</strong> – <strong>[in]</strong> Size of storage in bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Initialization successful. </p></li>
+<li><p><strong>false</strong> – Initialization failed (capacity was not a power of two). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429osusat_ring_buffer_pow2_clearP25osusat_ring_buffer_pow2_t">
+<span id="_CPPv329osusat_ring_buffer_pow2_clearP25osusat_ring_buffer_pow2_t"></span><span id="_CPPv229osusat_ring_buffer_pow2_clearP25osusat_ring_buffer_pow2_t"></span><span id="osusat_ring_buffer_pow2_clear__osusat_ring_buffer_pow2_tP"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1gafbd67ca8dde7738aaf5be06207c59cdf"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_clear</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429osusat_ring_buffer_pow2_clearP25osusat_ring_buffer_pow2_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Reset the buffer to empty. </p>
+<p>Resets head and tail indices to zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rb</strong> – <strong>[inout]</strong> The ring buffer handle. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429osusat_ring_buffer_pow2_emptyPK25osusat_ring_buffer_pow2_t">
+<span id="_CPPv329osusat_ring_buffer_pow2_emptyPK25osusat_ring_buffer_pow2_t"></span><span id="_CPPv229osusat_ring_buffer_pow2_emptyPK25osusat_ring_buffer_pow2_t"></span><span id="osusat_ring_buffer_pow2_empty__osusat_ring_buffer_pow2_tCP"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1gaba2fd5c541cd777360efe21bc4681061"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_empty</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429osusat_ring_buffer_pow2_emptyPK25osusat_ring_buffer_pow2_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if the buffer is empty. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rb</strong> – <strong>[in]</strong> The ring buffer handle. </p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Buffer is empty. </p></li>
+<li><p><strong>false</strong> – Buffer contains data. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428osusat_ring_buffer_pow2_fullPK25osusat_ring_buffer_pow2_t">
+<span id="_CPPv328osusat_ring_buffer_pow2_fullPK25osusat_ring_buffer_pow2_t"></span><span id="_CPPv228osusat_ring_buffer_pow2_fullPK25osusat_ring_buffer_pow2_t"></span><span id="osusat_ring_buffer_pow2_full__osusat_ring_buffer_pow2_tCP"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1ga6e1314b1bde35903d2dc98d11631006a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_full</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428osusat_ring_buffer_pow2_fullPK25osusat_ring_buffer_pow2_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check if the buffer is full. </p>
+<p>Uses bitwise masking to check the next write position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rb</strong> – <strong>[in]</strong> The ring buffer handle. </p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Buffer is full. </p></li>
+<li><p><strong>false</strong> – Buffer has space available. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428osusat_ring_buffer_pow2_pushP25osusat_ring_buffer_pow2_t7uint8_t">
+<span id="_CPPv328osusat_ring_buffer_pow2_pushP25osusat_ring_buffer_pow2_t7uint8_t"></span><span id="_CPPv228osusat_ring_buffer_pow2_pushP25osusat_ring_buffer_pow2_t7uint8_t"></span><span id="osusat_ring_buffer_pow2_push__osusat_ring_buffer_pow2_tP.uint8_t"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1gae291821d35fb59697ecb0a6299ced553"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_push</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">byte</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428osusat_ring_buffer_pow2_pushP25osusat_ring_buffer_pow2_t7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Push one byte into the buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rb</strong> – <strong>[inout]</strong> The ring buffer handle. </p></li>
+<li><p><strong>byte</strong> – <strong>[in]</strong> The byte to store.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Success, byte added. </p></li>
+<li><p><strong>false</strong> – Buffer was full. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427osusat_ring_buffer_pow2_popP25osusat_ring_buffer_pow2_tP7uint8_t">
+<span id="_CPPv327osusat_ring_buffer_pow2_popP25osusat_ring_buffer_pow2_tP7uint8_t"></span><span id="_CPPv227osusat_ring_buffer_pow2_popP25osusat_ring_buffer_pow2_tP7uint8_t"></span><span id="osusat_ring_buffer_pow2_pop__osusat_ring_buffer_pow2_tP.uint8_tP"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1ga86eece9c47402843fb66337b509af286"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_pop</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427osusat_ring_buffer_pow2_popP25osusat_ring_buffer_pow2_tP7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Pop one byte from the buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rb</strong> – <strong>[inout]</strong> The ring buffer handle. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Pointer to where the popped byte will be written.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Success, byte written to <code class="docutils literal notranslate"><span class="pre">out</span></code>. </p></li>
+<li><p><strong>false</strong> – Buffer was empty. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428osusat_ring_buffer_pow2_peekPK25osusat_ring_buffer_pow2_tP7uint8_t">
+<span id="_CPPv328osusat_ring_buffer_pow2_peekPK25osusat_ring_buffer_pow2_tP7uint8_t"></span><span id="_CPPv228osusat_ring_buffer_pow2_peekPK25osusat_ring_buffer_pow2_tP7uint8_t"></span><span id="osusat_ring_buffer_pow2_peek__osusat_ring_buffer_pow2_tCP.uint8_tP"></span><span class="target" id="group__osusat__ring__buffer__pow2__api_1ga2b1b17909c98fc21e3bc4b78525f3cfb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_ring_buffer_pow2_peek</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t" title="osusat_ring_buffer_pow2_t"><span class="n"><span class="pre">osusat_ring_buffer_pow2_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rb</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428osusat_ring_buffer_pow2_peekPK25osusat_ring_buffer_pow2_tP7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Peek at the next byte without removing it. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rb</strong> – <strong>[in]</strong> The ring buffer handle. </p></li>
+<li><p><strong>out</strong> – <strong>[out]</strong> Pointer to where the peeked byte will be written.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Success, byte written to <code class="docutils literal notranslate"><span class="pre">out</span></code>. </p></li>
+<li><p><strong>false</strong> – Buffer was empty. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat Core</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Primitives:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ring_buffer.html">Ring Buffer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ring Buffer Pow2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv425osusat_ring_buffer_pow2_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414osusat_is_pow26size_t"><code class="docutils literal notranslate"><span class="pre">osusat_is_pow2()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv428osusat_ring_buffer_pow2_initP25osusat_ring_buffer_pow2_tP7uint8_t6size_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv429osusat_ring_buffer_pow2_clearP25osusat_ring_buffer_pow2_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_clear()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv429osusat_ring_buffer_pow2_emptyPK25osusat_ring_buffer_pow2_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_empty()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv428osusat_ring_buffer_pow2_fullPK25osusat_ring_buffer_pow2_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_full()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv428osusat_ring_buffer_pow2_pushP25osusat_ring_buffer_pow2_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_push()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv427osusat_ring_buffer_pow2_popP25osusat_ring_buffer_pow2_tP7uint8_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_pop()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv428osusat_ring_buffer_pow2_peekPK25osusat_ring_buffer_pow2_tP7uint8_t"><code class="docutils literal notranslate"><span class="pre">osusat_ring_buffer_pow2_peek()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="event_bus.html">Event Bus</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ring_buffer.html" title="previous chapter">Ring Buffer</a></li>
+      <li>Next: <a href="event_bus.html" title="next chapter">Event Bus</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/primitives/ring_buffer_pow2.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

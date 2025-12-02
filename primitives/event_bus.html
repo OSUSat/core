@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Event Bus &#8212; OSUSat Core  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Ring Buffer Pow2" href="ring_buffer_pow2.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="event-bus">
+<h1>Event Bus<a class="headerlink" href="#event-bus" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__event__bus"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Event</span> <span class="pre">Bus</span></span></dt>
+<dd><p>Generic Publish/Subscribe Mechanism. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv42id">
+<span id="_CPPv32id"></span><span id="_CPPv22id"></span><span id="id__osusat_event_id_t"></span><span class="target" id="group__osusat__event__bus_1ga50b8f7dc805b7558c90d8f130c83e73d"></span><a class="reference internal" href="#_CPPv417osusat_event_id_t" title="osusat_event_id_t"><span class="n"><span class="pre">osusat_event_id_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">id</span></span></span><a class="headerlink" href="#_CPPv42id" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Composite Event ID </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv47payload">
+<span id="_CPPv37payload"></span><span id="_CPPv27payload"></span><span id="payload__uint8_tA"></span><span class="target" id="group__osusat__event__bus_1gab6eca2e9d47a2653c6fc53deaff61353"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">payload</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">OSUSAT_EVENT_MAX_PAYLOAD</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv47payload" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Data copy </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv411payload_len">
+<span id="_CPPv311payload_len"></span><span id="_CPPv211payload_len"></span><span id="payload_len__uint8_t"></span><span class="target" id="group__osusat__event__bus_1gaadb231ddfbc4bb1a2ccd843e0a88b7f4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">payload_len</span></span></span><a class="headerlink" href="#_CPPv411payload_len" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Valid bytes in payload </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__event__bus__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Structures</span></span></dt>
+<dd><p>Structures used by the Event Bus. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_EVENT_MAX_PAYLOAD">
+<span class="target" id="group__osusat__event__bus__types_1gab355e9006e9f0cf24e041773adeb4879"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_EVENT_MAX_PAYLOAD</span></span></span><a class="headerlink" href="#c.OSUSAT_EVENT_MAX_PAYLOAD" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Max payload size in bytes. Kept small (8 bytes) to fit primitives (double, uint64_t) or pointers. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_EVENT_MAX_SUBSCRIBERS">
+<span class="target" id="group__osusat__event__bus__types_1ga8c163c9064b16f0123eedbeb1eb707bd"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_EVENT_MAX_SUBSCRIBERS</span></span></span><a class="headerlink" href="#c.OSUSAT_EVENT_MAX_SUBSCRIBERS" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Maximum number of active subscriptions allowed system-wide. Adjust based on RAM constraints. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_BUILD_EVENT_ID">
+<span class="target" id="group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_BUILD_EVENT_ID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">svc_uid</span></span>, <span class="n"><span class="pre">code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.OSUSAT_BUILD_EVENT_ID" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Helper to build a unique ID from a Service UID and Local Code. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>svc_uid</strong> – Unique 16-bit Service Identifier (e.g. 0xBA77 for Batt). </p></li>
+<li><p><strong>code</strong> – Local enum value (0-65535). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_GET_SERVICE_UID">
+<span class="target" id="group__osusat__event__bus__types_1ga0cfe0bd33260387b955447a03f32a69a"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_GET_SERVICE_UID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">event_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.OSUSAT_GET_SERVICE_UID" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Helper to extract the Service UID from an Event ID. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_GET_LOCAL_CODE">
+<span class="target" id="group__osusat__event__bus__types_1ga2af3a3500818b8b884a161c9c4d4759b"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_GET_LOCAL_CODE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">event_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.OSUSAT_GET_LOCAL_CODE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Helper to extract the Local Code from an Event ID. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv417osusat_event_id_t">
+<span id="_CPPv317osusat_event_id_t"></span><span id="_CPPv217osusat_event_id_t"></span><span id="osusat_event_id_t"></span><span class="target" id="group__osusat__event__bus__types_1ga73965536091855c6af0cd89a35b65002"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_id_t</span></span></span><a class="headerlink" href="#_CPPv417osusat_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Event Identifier Type (32-bit). </p>
+<p>Constructed using <a class="reference internal" href="#group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980"><span class="std std-ref">OSUSAT_BUILD_EVENT_ID()</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv422osusat_event_handler_t">
+<span id="_CPPv322osusat_event_handler_t"></span><span id="_CPPv222osusat_event_handler_t"></span><span id="osusat_event_handler_t"></span><span class="target" id="group__osusat__event__bus__types_1gaccccae08b2fbb1acea7a6cb888e36c01"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_handler_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414osusat_event_t" title="osusat_event_t"><span class="n"><span class="pre">osusat_event_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv422osusat_event_handler_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Event Handler Callback definition. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param event<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>[in]</strong> Pointer to the event data. </p>
+</dd>
+<dt class="field-even">Param ctx<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>[in]</strong> User context pointer registered during subscription. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv414osusat_event_t">
+<span id="_CPPv314osusat_event_t"></span><span id="_CPPv214osusat_event_t"></span><span id="osusat_event_t"></span><span class="target" id="structosusat__event__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_t</span></span></span><a class="headerlink" href="#_CPPv414osusat_event_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;event_bus.h&gt;</em></div>
+<p>The event object stored in the queue. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__event__bus__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for interacting with the Event Bus. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421osusat_event_bus_initP14osusat_event_t6size_t">
+<span id="_CPPv321osusat_event_bus_initP14osusat_event_t6size_t"></span><span id="_CPPv221osusat_event_bus_initP14osusat_event_t6size_t"></span><span id="osusat_event_bus_init__osusat_event_tP.s"></span><span class="target" id="group__osusat__event__bus__api_1gaae6e93a3fbfe725ca1494eb91284863c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_bus_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv414osusat_event_t" title="osusat_event_t"><span class="n"><span class="pre">osusat_event_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">queue_storage</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">queue_capacity</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421osusat_event_bus_initP14osusat_event_t6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Event Bus. </p>
+<p>Configures the internal ring buffer and clears subscribers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue_storage</strong> – <strong>[in]</strong> Pointer to allocated array of event structs. </p></li>
+<li><p><strong>queue_capacity</strong> – <strong>[in]</strong> Number of elements in the storage array. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426osusat_event_bus_subscribe17osusat_event_id_t22osusat_event_handler_tPv">
+<span id="_CPPv326osusat_event_bus_subscribe17osusat_event_id_t22osusat_event_handler_tPv"></span><span id="_CPPv226osusat_event_bus_subscribe17osusat_event_id_t22osusat_event_handler_tPv"></span><span id="osusat_event_bus_subscribe__osusat_event_id_t.osusat_event_handler_t.voidP"></span><span class="target" id="group__osusat__event__bus__api_1gae83611a56e85f92a045e85cb804a4fde"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_bus_subscribe</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417osusat_event_id_t" title="osusat_event_id_t"><span class="n"><span class="pre">osusat_event_id_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event_id</span></span>, <a class="reference internal" href="#_CPPv422osusat_event_handler_t" title="osusat_event_handler_t"><span class="n"><span class="pre">osusat_event_handler_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handler</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426osusat_event_bus_subscribe17osusat_event_id_t22osusat_event_handler_tPv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Subscribe to an event. </p>
+<p>Registers a callback to be invoked when the specific Event ID occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_id</strong> – <strong>[in]</strong> The Composite ID to listen for. </p></li>
+<li><p><strong>handler</strong> – <strong>[in]</strong> The function to call. </p></li>
+<li><p><strong>ctx</strong> – <strong>[in]</strong> Optional context pointer passed to the handler.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Subscription added successfully. </p></li>
+<li><p><strong>false</strong> – Subscriber table full (increase OSUSAT_EVENT_MAX_SUBSCRIBERS). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424osusat_event_bus_publish17osusat_event_id_tPKv6size_t">
+<span id="_CPPv324osusat_event_bus_publish17osusat_event_id_tPKv6size_t"></span><span id="_CPPv224osusat_event_bus_publish17osusat_event_id_tPKv6size_t"></span><span id="osusat_event_bus_publish__osusat_event_id_t.voidCP.s"></span><span class="target" id="group__osusat__event__bus__api_1ga9a19dc997602dd4c0a2bd006b51e2486"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_bus_publish</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417osusat_event_id_t" title="osusat_event_id_t"><span class="n"><span class="pre">osusat_event_id_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event_id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">payload</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424osusat_event_bus_publish17osusat_event_id_tPKv6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Publish an event to the bus. </p>
+<p>Copies the event data into the queue. Safe to call from ISRs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_id</strong> – <strong>[in]</strong> The Composite ID of the event. </p></li>
+<li><p><strong>payload</strong> – <strong>[in]</strong> Pointer to data to copy (can be NULL). </p></li>
+<li><p><strong>len</strong> – <strong>[in]</strong> Length of data (must be &lt;= OSUSAT_EVENT_MAX_PAYLOAD).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> – Event queued successfully. </p></li>
+<li><p><strong>false</strong> – Queue full (Event Dropped!). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424osusat_event_bus_processv">
+<span id="_CPPv324osusat_event_bus_processv"></span><span id="_CPPv224osusat_event_bus_processv"></span><span id="osusat_event_bus_process__void"></span><span class="target" id="group__osusat__event__bus__api_1ga0a64376500bc5e410ce4d8e436475bb3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_bus_process</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424osusat_event_bus_processv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Process the Event Queue. </p>
+<p>Pops all pending events and executes their subscribers. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Must be called from the main loop (Thread Mode). </p>
+</div>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat Core</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Primitives:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ring_buffer.html">Ring Buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ring_buffer_pow2.html">Ring Buffer Pow2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Event Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv42id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv47payload"><code class="docutils literal notranslate"><span class="pre">payload</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv411payload_len"><code class="docutils literal notranslate"><span class="pre">payload_len</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_EVENT_MAX_PAYLOAD"><code class="docutils literal notranslate"><span class="pre">OSUSAT_EVENT_MAX_PAYLOAD</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_EVENT_MAX_SUBSCRIBERS"><code class="docutils literal notranslate"><span class="pre">OSUSAT_EVENT_MAX_SUBSCRIBERS</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_BUILD_EVENT_ID"><code class="docutils literal notranslate"><span class="pre">OSUSAT_BUILD_EVENT_ID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_GET_SERVICE_UID"><code class="docutils literal notranslate"><span class="pre">OSUSAT_GET_SERVICE_UID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_GET_LOCAL_CODE"><code class="docutils literal notranslate"><span class="pre">OSUSAT_GET_LOCAL_CODE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417osusat_event_id_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_id_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422osusat_event_handler_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_handler_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv414osusat_event_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv421osusat_event_bus_initP14osusat_event_t6size_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_bus_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv426osusat_event_bus_subscribe17osusat_event_id_t22osusat_event_handler_tPv"><code class="docutils literal notranslate"><span class="pre">osusat_event_bus_subscribe()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv424osusat_event_bus_publish17osusat_event_id_tPKv6size_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_bus_publish()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv424osusat_event_bus_processv"><code class="docutils literal notranslate"><span class="pre">osusat_event_bus_process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ring_buffer_pow2.html" title="previous chapter">Ring Buffer Pow2</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/primitives/event_bus.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
