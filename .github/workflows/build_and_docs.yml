@@ -50,7 +50,7 @@ jobs:
       if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: eps/firmware/build/documentation/sphinx/
+        publish_dir: build/documentation/sphinx/
         destination_dir: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || '.' }}
         keep_files: true
 
