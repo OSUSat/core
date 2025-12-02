@@ -68,6 +68,24 @@ typedef uint32_t osusat_event_id_t;
 #define OSUSAT_GET_LOCAL_CODE(event_id) ((uint16_t)((event_id) & 0xFFFF))
 
 /**
+ * @brief Reserved UID for Core System Events.
+ */
+#define OSUSAT_SERVICE_UID_SYSTEM 0x0000
+
+/**
+ * @brief System Event Codes.
+ */
+typedef enum {
+    SYSTEM_SYSTICK = 1, /**< Periodic heartbeat (e.g. 100Hz) */
+    SYSTEM_INIT_DONE,   /**< All services initialized */
+} osusat_system_code_t;
+
+#define EVENT_SYSTICK                                                          \
+    OSUSAT_BUILD_EVENT_ID(OSUSAT_SERVICE_UID_SYSTEM, SYSTEM_SYSTICK)
+#define EVENT_SYSTEM_INIT                                                      \
+    OSUSAT_BUILD_EVENT_ID(OSUSAT_SERVICE_UID_SYSTEM, SYSTEM_INIT_DONE)
+
+/**
  * @struct osusat_event_t
  * @brief The event object stored in the queue.
  */
