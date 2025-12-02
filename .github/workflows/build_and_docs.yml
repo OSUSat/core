@@ -31,7 +31,7 @@ jobs:
       run: cmake --build ./build
 
     - name: Generate documentation
-      run: cmake --build ./build --target docs
+      run: cmake --build ./build --target core_docs
 
     - name: Upload Doxygen documentation
       uses: actions/upload-artifact@v4
