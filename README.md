@@ -2,6 +2,8 @@
 
 Core primitives for use in embedded OSUSat firmware
 
+Documentation can be found [here](https://osusat.github.io/core/)
+
 # Provided Primitives
 
 The current primitives available are:
