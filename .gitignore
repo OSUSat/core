@@ -1,0 +1,3 @@
+build/
+compile_commands.json
+documentation/doxygen_output/
