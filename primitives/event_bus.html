@@ -105,12 +105,28 @@
 <dd><p>Helper to extract the Local Code from an Event ID. </p>
 </dd></dl>
 
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_SERVICE_UID_SYSTEM">
+<span class="target" id="group__osusat__event__bus__types_1gaacc98bdfe07e8d560177b3ab85e9eaa1"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SERVICE_UID_SYSTEM</span></span></span><a class="headerlink" href="#c.OSUSAT_SERVICE_UID_SYSTEM" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Reserved UID for Core System Events. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EVENT_SYSTICK">
+<span class="target" id="group__osusat__event__bus__types_1gaaa9fd284ba6ed1757d6ec8dc1bd19379"></span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_SYSTICK</span></span></span><a class="headerlink" href="#c.EVENT_SYSTICK" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EVENT_SYSTEM_INIT">
+<span class="target" id="group__osusat__event__bus__types_1gae3e11f4492290430fe94d0d67f1896dd"></span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_SYSTEM_INIT</span></span></span><a class="headerlink" href="#c.EVENT_SYSTEM_INIT" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
 <dt class="sig sig-object cpp" id="_CPPv417osusat_event_id_t">
-<span id="_CPPv317osusat_event_id_t"></span><span id="_CPPv217osusat_event_id_t"></span><span id="osusat_event_id_t"></span><span class="target" id="group__osusat__event__bus__types_1ga73965536091855c6af0cd89a35b65002"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_id_t</span></span></span><a class="headerlink" href="#_CPPv417osusat_event_id_t" title="Link to this definition">¶</a><br /></dt>
+<span id="_CPPv317osusat_event_id_t"></span><span id="_CPPv217osusat_event_id_t"></span><span id="osusat_event_id_t"></span><span class="target" id="group__osusat__event__bus__types_1gac1bdf9439b2f075299a2f98e80fe4264"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_event_id_t</span></span></span><a class="headerlink" href="#_CPPv417osusat_event_id_t" title="Link to this definition">¶</a><br /></dt>
 <dd><p>Event Identifier Type (32-bit). </p>
 <p>Constructed using <a class="reference internal" href="#group__osusat__event__bus__types_1ga6fb66ede3b29d386fec6f57800d3e980"><span class="std std-ref">OSUSAT_BUILD_EVENT_ID()</span></a>. </p>
 </dd></dl>
@@ -127,6 +143,28 @@
 <dd class="field-even"><p><strong>[in]</strong> User context pointer registered during subscription. </p>
 </dd>
 </dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv420osusat_system_code_t">
+<span id="_CPPv320osusat_system_code_t"></span><span id="_CPPv220osusat_system_code_t"></span><span class="target" id="group__osusat__event__bus__types_1ga850910b01a6da075d04e80abdb9f4575"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_system_code_t</span></span></span><a class="headerlink" href="#_CPPv420osusat_system_code_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>System Event Codes. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20osusat_system_code_t14SYSTEM_SYSTICKE">
+<span id="_CPPv3N20osusat_system_code_t14SYSTEM_SYSTICKE"></span><span id="_CPPv2N20osusat_system_code_t14SYSTEM_SYSTICKE"></span><span class="target" id="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575aa2ffd23fa80c0f84c0d47a4c337ce2b8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_SYSTICK</span></span></span><a class="headerlink" href="#_CPPv4N20osusat_system_code_t14SYSTEM_SYSTICKE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Periodic heartbeat (e.g. 100Hz) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20osusat_system_code_t16SYSTEM_INIT_DONEE">
+<span id="_CPPv3N20osusat_system_code_t16SYSTEM_INIT_DONEE"></span><span id="_CPPv2N20osusat_system_code_t16SYSTEM_INIT_DONEE"></span><span class="target" id="group__osusat__event__bus__types_1gga850910b01a6da075d04e80abdb9f4575ae0cbe284d52220d87004d969af6e0e84"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYSTEM_INIT_DONE</span></span></span><a class="headerlink" href="#_CPPv4N20osusat_system_code_t16SYSTEM_INIT_DONEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>All services initialized </p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -260,8 +298,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_BUILD_EVENT_ID"><code class="docutils literal notranslate"><span class="pre">OSUSAT_BUILD_EVENT_ID</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_GET_SERVICE_UID"><code class="docutils literal notranslate"><span class="pre">OSUSAT_GET_SERVICE_UID</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_GET_LOCAL_CODE"><code class="docutils literal notranslate"><span class="pre">OSUSAT_GET_LOCAL_CODE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_SERVICE_UID_SYSTEM"><code class="docutils literal notranslate"><span class="pre">OSUSAT_SERVICE_UID_SYSTEM</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EVENT_SYSTICK"><code class="docutils literal notranslate"><span class="pre">EVENT_SYSTICK</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.EVENT_SYSTEM_INIT"><code class="docutils literal notranslate"><span class="pre">EVENT_SYSTEM_INIT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv417osusat_event_id_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_id_t</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv422osusat_event_handler_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_handler_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv420osusat_system_code_t"><code class="docutils literal notranslate"><span class="pre">osusat_system_code_t</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv414osusat_event_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_t</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv421osusat_event_bus_initP14osusat_event_t6size_t"><code class="docutils literal notranslate"><span class="pre">osusat_event_bus_init()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv426osusat_event_bus_subscribe17osusat_event_id_t22osusat_event_handler_tPv"><code class="docutils literal notranslate"><span class="pre">osusat_event_bus_subscribe()</span></code></a></li>
