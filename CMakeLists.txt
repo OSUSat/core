@@ -63,7 +63,7 @@ endif()
 add_library(OSUSat::Core ALIAS osusat-core)
 
 if(CLANG_FORMAT_EXECUTABLE)
-    add_custom_target(format
+    add_custom_target(core_format
         COMMAND ${CLANG_FORMAT_EXECUTABLE} -i ${C_SOURCES} ${C_HEADERS}
         COMMENT "Formatting OSUSat embedded primitives"
         VERBATIM
@@ -71,7 +71,7 @@ if(CLANG_FORMAT_EXECUTABLE)
 endif()
 
 if(CLANG_TIDY_EXECUTABLE)
-    add_custom_target(lint
+    add_custom_target(core_lint
         COMMAND ${CLANG_TIDY_EXECUTABLE} ${C_SOURCES} --
             -I${CMAKE_CURRENT_SOURCE_DIR}/include
         COMMENT "Linting OSUSat embedded primitives"
@@ -106,14 +106,14 @@ find_program(SPHINX_BUILD sphinx-build)
 if (DOXYGEN_FOUND)
     set(DOXYFILE ${CMAKE_CURRENT_SOURCE_DIR}/documentation/doxygen/Doxyfile)
 
-    add_custom_target(doxygen
+    add_custom_target(core_doxygen
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/documentation/doxygen
         COMMENT "Generating Doxygen XML API documentation"
         VERBATIM)
 
     if (SPHINX_BUILD)
-        add_custom_target(sphinx
+        add_custom_target(core_sphinx
             COMMAND ${SPHINX_BUILD}
                     -b html
                     ${CMAKE_CURRENT_SOURCE_DIR}/documentation/sphinx/source
@@ -121,9 +121,9 @@ if (DOXYGEN_FOUND)
             COMMENT "Generating Sphinx documentation"
             VERBATIM)
 
-        add_dependencies(sphinx doxygen)
+        add_dependencies(core_sphinx core_doxygen)
 
-        add_custom_target(docs
-            DEPENDS doxygen sphinx)
+        add_custom_target(core_docs
+            DEPENDS core_doxygen core_sphinx)
     endif()
 endif()
