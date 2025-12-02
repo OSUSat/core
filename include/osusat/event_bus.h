@@ -46,7 +46,7 @@ extern "C" {
  *
  * Constructed using OSUSAT_BUILD_EVENT_ID().
  */
-typedef uint16_t osusat_event_id_t;
+typedef uint32_t osusat_event_id_t;
 
 /**
  * @brief Helper to build a unique ID from a Service UID and Local Code.
