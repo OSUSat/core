@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Event Bus &#8212; OSUSat Core  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Event Bus" href="event_bus.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="event-bus">
+<h1>Event Bus<a class="headerlink" href="#event-bus" title="Link to this heading">¶</a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__slog"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Logging</span> <span class="pre">System</span></span></dt>
+<dd><p>Structured logging with deferred transmission. </p>
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__slog__types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Structures</span></span></dt>
+<dd><p>Structures and types used by the Logging System. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_SLOG_MAX_MESSAGE_LEN">
+<span class="target" id="group__osusat__slog__types_1ga57883fd5885c295959cb476989be0b94"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG_MAX_MESSAGE_LEN</span></span></span><a class="headerlink" href="#c.OSUSAT_SLOG_MAX_MESSAGE_LEN" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Maximum length of a single log message (including null terminator). </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv426osusat_slog_timestamp_fn_t">
+<span id="_CPPv326osusat_slog_timestamp_fn_t"></span><span id="_CPPv226osusat_slog_timestamp_fn_t"></span><span id="osusat_slog_timestamp_fn_t"></span><span class="target" id="group__osusat__slog__types_1ga39b7ea30f55831ceddb5ab6bc8f316c3"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_timestamp_fn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv426osusat_slog_timestamp_fn_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Timestamp provider function type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current timestamp in milliseconds. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv422osusat_slog_flush_fn_t">
+<span id="_CPPv322osusat_slog_flush_fn_t"></span><span id="_CPPv222osusat_slog_flush_fn_t"></span><span id="osusat_slog_flush_fn_t"></span><span class="target" id="group__osusat__slog__types_1ga920f6ea1f2d1a7ff05e2e926cdaa2afa"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_flush_fn_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419osusat_slog_entry_t" title="osusat_slog_entry_t"><span class="n"><span class="pre">osusat_slog_entry_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv422osusat_slog_flush_fn_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush callback function type. </p>
+<p>Called during <a class="reference internal" href="#group__osusat__slog__api_1gac76adcb9d644cb6c538e4e18a92bd133"><span class="std std-ref">osusat_slog_flush()</span></a> for each log entry. Implementation should handle framing, packetization, and transmission as needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param entry<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>[in]</strong> Pointer to log entry header. </p>
+</dd>
+<dt class="field-even">Param message<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>[in]</strong> Pointer to null-terminated message string. </p>
+</dd>
+<dt class="field-odd">Param ctx<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>[in]</strong> User context pointer passed during flush. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419osusat_slog_level_t">
+<span id="_CPPv319osusat_slog_level_t"></span><span id="_CPPv219osusat_slog_level_t"></span><span class="target" id="group__osusat__slog__types_1gafe0f1801f6e3827f06165e284313814b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_level_t</span></span></span><a class="headerlink" href="#_CPPv419osusat_slog_level_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log severity levels. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19osusat_slog_level_t17OSUSAT_SLOG_DEBUGE">
+<span id="_CPPv3N19osusat_slog_level_t17OSUSAT_SLOG_DEBUGE"></span><span id="_CPPv2N19osusat_slog_level_t17OSUSAT_SLOG_DEBUGE"></span><span class="target" id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba3416b48f12ae3f2061aa0be0f9f6628e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG_DEBUG</span></span></span><a class="headerlink" href="#_CPPv4N19osusat_slog_level_t17OSUSAT_SLOG_DEBUGE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Verbose debug information </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19osusat_slog_level_t16OSUSAT_SLOG_INFOE">
+<span id="_CPPv3N19osusat_slog_level_t16OSUSAT_SLOG_INFOE"></span><span id="_CPPv2N19osusat_slog_level_t16OSUSAT_SLOG_INFOE"></span><span class="target" id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba0910e0bc044406b4a8be8fbd9198bb24"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG_INFO</span></span></span><a class="headerlink" href="#_CPPv4N19osusat_slog_level_t16OSUSAT_SLOG_INFOE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Informational messages </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19osusat_slog_level_t16OSUSAT_SLOG_WARNE">
+<span id="_CPPv3N19osusat_slog_level_t16OSUSAT_SLOG_WARNE"></span><span id="_CPPv2N19osusat_slog_level_t16OSUSAT_SLOG_WARNE"></span><span class="target" id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba4331435d3b641ebbb3a79f5dde6f3d6e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG_WARN</span></span></span><a class="headerlink" href="#_CPPv4N19osusat_slog_level_t16OSUSAT_SLOG_WARNE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Warning conditions </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19osusat_slog_level_t17OSUSAT_SLOG_ERRORE">
+<span id="_CPPv3N19osusat_slog_level_t17OSUSAT_SLOG_ERRORE"></span><span id="_CPPv2N19osusat_slog_level_t17OSUSAT_SLOG_ERRORE"></span><span class="target" id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814baaaae4bb5016bcadcae7bf6d772e3f193"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG_ERROR</span></span></span><a class="headerlink" href="#_CPPv4N19osusat_slog_level_t17OSUSAT_SLOG_ERRORE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Error conditions </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19osusat_slog_level_t20OSUSAT_SLOG_CRITICALE">
+<span id="_CPPv3N19osusat_slog_level_t20OSUSAT_SLOG_CRITICALE"></span><span id="_CPPv2N19osusat_slog_level_t20OSUSAT_SLOG_CRITICALE"></span><span class="target" id="group__osusat__slog__types_1ggafe0f1801f6e3827f06165e284313814ba02b6fdc266af82fa9d529477846cab24"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG_CRITICAL</span></span></span><a class="headerlink" href="#_CPPv4N19osusat_slog_level_t20OSUSAT_SLOG_CRITICALE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Critical failures </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__slog__types_1gab898071398b359603a35c202e9c65f3b"></span><span class="sig-name descname"><span class="pre">struct</span> <span class="pre">__attribute__</span> <span class="pre">((packed))</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__slog__types_1gae687057651841f31f03c8710710929f6"></span><span class="sig-name descname"><span class="pre">osusat_slog_entry_t</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419osusat_slog_entry_t">
+<span id="_CPPv319osusat_slog_entry_t"></span><span id="_CPPv219osusat_slog_entry_t"></span><span id="osusat_slog_entry_t"></span><span class="target" id="structosusat__slog__entry__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_entry_t</span></span></span><a class="headerlink" href="#_CPPv419osusat_slog_entry_t" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;slog.h&gt;</em></div>
+<p>Log entry header stored in ring buffer. </p>
+<p>Each log entry consists of this header followed by a null-terminated message string. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__osusat__slog__api"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Public</span> <span class="pre">API</span></span></dt>
+<dd><p>External interface for interacting with the Logging System. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OSUSAT_SLOG">
+<span class="target" id="group__osusat__slog__api_1gadd8bb61f2206ccb79ae3ee4e157a77de"></span><span class="sig-name descname"><span class="n"><span class="pre">OSUSAT_SLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">level</span></span>, <span class="n"><span class="pre">component</span></span>, <span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.OSUSAT_SLOG" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Main logging macro. </p>
+<p>Automatically captures the source line number and formats the message.</p>
+<p>
+Example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">osusat_slog</span><span class="p">(</span><span class="n">osusat_slog_WARN</span><span class="p">,</span> <span class="n">EPS_BATTERY</span><span class="p">,</span> <span class="s2">&quot;Voltage low: </span><span class="si">%d</span><span class="s2">mV&quot;</span><span class="p">,</span> <span class="n">voltage</span><span class="p">);</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> – <strong>[in]</strong> Severity level (osusat_slog_level_t). </p></li>
+<li><p><strong>component</strong> – <strong>[in]</strong> Component identifier (uint8_t). </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments for format string.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOG_DEBUG">
+<span class="target" id="group__osusat__slog__api_1gacd4baf6ed5cebb00af5df11e7c289e33"></span><span class="sig-name descname"><span class="n"><span class="pre">LOG_DEBUG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">component</span></span>, <span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.LOG_DEBUG" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log a DEBUG level message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> – <strong>[in]</strong> Component identifier. </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOG_INFO">
+<span class="target" id="group__osusat__slog__api_1ga7bbefdd3b087c6a39b6f677b63f25d94"></span><span class="sig-name descname"><span class="n"><span class="pre">LOG_INFO</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">component</span></span>, <span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.LOG_INFO" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log an INFO level message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> – <strong>[in]</strong> Component identifier. </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOG_WARN">
+<span class="target" id="group__osusat__slog__api_1ga6f4ae2de6e3a56df741f6213ab6ad72f"></span><span class="sig-name descname"><span class="n"><span class="pre">LOG_WARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">component</span></span>, <span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.LOG_WARN" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log a WARN level message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> – <strong>[in]</strong> Component identifier. </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOG_ERROR">
+<span class="target" id="group__osusat__slog__api_1gac0e47ba70b120fad351ebed1c2f3d848"></span><span class="sig-name descname"><span class="n"><span class="pre">LOG_ERROR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">component</span></span>, <span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.LOG_ERROR" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log an ERROR level message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> – <strong>[in]</strong> Component identifier. </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOG_CRITICAL">
+<span class="target" id="group__osusat__slog__api_1ga721347567e0cfddaedf2c2229682f665"></span><span class="sig-name descname"><span class="n"><span class="pre">LOG_CRITICAL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">component</span></span>, <span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.LOG_CRITICAL" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Log a CRITICAL level message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> – <strong>[in]</strong> Component identifier. </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416osusat_slog_initP20osusat_ring_buffer_t26osusat_slog_timestamp_fn_t19osusat_slog_level_t">
+<span id="_CPPv316osusat_slog_initP20osusat_ring_buffer_t26osusat_slog_timestamp_fn_t19osusat_slog_level_t"></span><span id="_CPPv216osusat_slog_initP20osusat_ring_buffer_t26osusat_slog_timestamp_fn_t19osusat_slog_level_t"></span><span id="osusat_slog_init__osusat_ring_buffer_tP.osusat_slog_timestamp_fn_t.osusat_slog_level_t"></span><span class="target" id="group__osusat__slog__api_1ga82f8335121202a3fd24d6b96e3eb1f4e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="ring_buffer.html#_CPPv420osusat_ring_buffer_t" title="osusat_ring_buffer_t"><span class="n"><span class="pre">osusat_ring_buffer_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">log_buf</span></span>, <a class="reference internal" href="#_CPPv426osusat_slog_timestamp_fn_t" title="osusat_slog_timestamp_fn_t"><span class="n"><span class="pre">osusat_slog_timestamp_fn_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp_fn</span></span>, <a class="reference internal" href="#_CPPv419osusat_slog_level_t" title="osusat_slog_level_t"><span class="n"><span class="pre">osusat_slog_level_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">min_level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416osusat_slog_initP20osusat_ring_buffer_t26osusat_slog_timestamp_fn_t19osusat_slog_level_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the logging subsystem. </p>
+<p>Sets up the log storage buffer and configures timestamp and filtering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_buf</strong> – <strong>[in]</strong> Ring buffer for storing log entries. Should be initialized with overwrite mode enabled. </p></li>
+<li><p><strong>timestamp_fn</strong> – <strong>[in]</strong> Function to get current timestamp in milliseconds (e.g., HAL_GetTick). Can be NULL if timestamps are not needed. </p></li>
+<li><p><strong>min_level</strong> – <strong>[in]</strong> Minimum log level to record. Logs below this level are silently discarded. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432osusat_slog_change_min_log_level19osusat_slog_level_t">
+<span id="_CPPv332osusat_slog_change_min_log_level19osusat_slog_level_t"></span><span id="_CPPv232osusat_slog_change_min_log_level19osusat_slog_level_t"></span><span id="osusat_slog_change_min_log_level__osusat_slog_level_t"></span><span class="target" id="group__osusat__slog__api_1ga3209a10ca8341d16f791faa4ebb4483d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_change_min_log_level</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419osusat_slog_level_t" title="osusat_slog_level_t"><span class="n"><span class="pre">osusat_slog_level_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">min_level</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432osusat_slog_change_min_log_level19osusat_slog_level_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Change the minimum logging level. </p>
+<p>Modifies the minimum log level to record during runtime. Useful for maintenance mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>min_level</strong> – <strong>[in]</strong> Minimum log level to record. Logs below this level are silently discarded. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426osusat_slog_write_internal19osusat_slog_level_t7uint8_t8uint16_tPKcz">
+<span id="_CPPv326osusat_slog_write_internal19osusat_slog_level_t7uint8_t8uint16_tPKcz"></span><span id="_CPPv226osusat_slog_write_internal19osusat_slog_level_t7uint8_t8uint16_tPKcz"></span><span id="osusat_slog_write_internal__osusat_slog_level_t.uint8_t.uint16_t.cCP.z"></span><span class="target" id="group__osusat__slog__api_1ga7ecbf1b2139a09090c304f53d9c3c0bc"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_write_internal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419osusat_slog_level_t" title="osusat_slog_level_t"><span class="n"><span class="pre">osusat_slog_level_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">level</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">component_id</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">line</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426osusat_slog_write_internal19osusat_slog_level_t7uint8_t8uint16_tPKcz" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Write a log entry (internal function). </p>
+<p>Formats the log message and stores it in the ring buffer along with metadata. Use the osusat_slog() macro instead of calling this directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> – <strong>[in]</strong> Severity level of the log. </p></li>
+<li><p><strong>component_id</strong> – <strong>[in]</strong> Component/subsystem identifier. </p></li>
+<li><p><strong>line</strong> – <strong>[in]</strong> Source code line number. </p></li>
+<li><p><strong>fmt</strong> – <strong>[in]</strong> Printf-style format string. </p></li>
+<li><p><strong>...</strong> – <strong>[in]</strong> Variable arguments for format string. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417osusat_slog_flush22osusat_slog_flush_fn_tPv">
+<span id="_CPPv317osusat_slog_flush22osusat_slog_flush_fn_tPv"></span><span id="_CPPv217osusat_slog_flush22osusat_slog_flush_fn_tPv"></span><span id="osusat_slog_flush__osusat_slog_flush_fn_t.voidP"></span><span class="target" id="group__osusat__slog__api_1gac76adcb9d644cb6c538e4e18a92bd133"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_flush</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422osusat_slog_flush_fn_t" title="osusat_slog_flush_fn_t"><span class="n"><span class="pre">osusat_slog_flush_fn_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">flush_fn</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417osusat_slog_flush22osusat_slog_flush_fn_tPv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Flush all pending log entries. </p>
+<p>Drains the ring buffer and calls the provided callback for each log entry. The callback is responsible for transmission/packetization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flush_fn</strong> – <strong>[in]</strong> Callback function to handle each log entry. </p></li>
+<li><p><strong>ctx</strong> – <strong>[in]</strong> User context passed to callback. Can be NULL.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of log entries flushed. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425osusat_slog_pending_countv">
+<span id="_CPPv325osusat_slog_pending_countv"></span><span id="_CPPv225osusat_slog_pending_countv"></span><span id="osusat_slog_pending_count__void"></span><span class="target" id="group__osusat__slog__api_1gaa1dbfea471aa1425ac6e67a1a7ff7768"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">osusat_slog_pending_count</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425osusat_slog_pending_countv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get number of log entries currently buffered. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an estimate based on buffer usage and average entry size. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Approximate count of pending log entries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OSUSat Core</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Primitives:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ring_buffer.html">Ring Buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ring_buffer_pow2.html">Ring Buffer Pow2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_bus.html">Event Bus</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Event Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_SLOG_MAX_MESSAGE_LEN"><code class="docutils literal notranslate"><span class="pre">OSUSAT_SLOG_MAX_MESSAGE_LEN</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv426osusat_slog_timestamp_fn_t"><code class="docutils literal notranslate"><span class="pre">osusat_slog_timestamp_fn_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv422osusat_slog_flush_fn_t"><code class="docutils literal notranslate"><span class="pre">osusat_slog_flush_fn_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv419osusat_slog_level_t"><code class="docutils literal notranslate"><span class="pre">osusat_slog_level_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv419osusat_slog_entry_t"><code class="docutils literal notranslate"><span class="pre">osusat_slog_entry_t</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.OSUSAT_SLOG"><code class="docutils literal notranslate"><span class="pre">OSUSAT_SLOG</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.LOG_DEBUG"><code class="docutils literal notranslate"><span class="pre">LOG_DEBUG</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.LOG_INFO"><code class="docutils literal notranslate"><span class="pre">LOG_INFO</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.LOG_WARN"><code class="docutils literal notranslate"><span class="pre">LOG_WARN</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.LOG_ERROR"><code class="docutils literal notranslate"><span class="pre">LOG_ERROR</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c.LOG_CRITICAL"><code class="docutils literal notranslate"><span class="pre">LOG_CRITICAL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv416osusat_slog_initP20osusat_ring_buffer_t26osusat_slog_timestamp_fn_t19osusat_slog_level_t"><code class="docutils literal notranslate"><span class="pre">osusat_slog_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv432osusat_slog_change_min_log_level19osusat_slog_level_t"><code class="docutils literal notranslate"><span class="pre">osusat_slog_change_min_log_level()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv426osusat_slog_write_internal19osusat_slog_level_t7uint8_t8uint16_tPKcz"><code class="docutils literal notranslate"><span class="pre">osusat_slog_write_internal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv417osusat_slog_flush22osusat_slog_flush_fn_tPv"><code class="docutils literal notranslate"><span class="pre">osusat_slog_flush()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv425osusat_slog_pending_countv"><code class="docutils literal notranslate"><span class="pre">osusat_slog_pending_count()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="event_bus.html" title="previous chapter">Event Bus</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, FerretCode.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/primitives/slog.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

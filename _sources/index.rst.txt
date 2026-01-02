@@ -8,3 +8,4 @@ OSUSat Core Library documentation
    primitives/ring_buffer
    primitives/ring_buffer_pow2
    primitives/event_bus
+   primitives/slog
