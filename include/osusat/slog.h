@@ -29,6 +29,17 @@ extern "C" {
  * @defgroup osusat_slog Logging System
  * @brief Structured logging with deferred transmission.
  *
+ * A lightweight logging framework designed for embedded systems with limited
+ * resources. Stores log entries in a ring buffer for deferred transmission.
+ *
+ * Features:
+ * - Multiple severity levels (DEBUG through CRITICAL)
+ * - Automatic timestamp and source line capture
+ * - Component-based organization
+ * - Generic flush interface via callbacks (transport-agnostic)
+ * - Ring buffer storage with overwrite support
+ * - Printf-style formatting
+ *
  * @{
  */
 
@@ -178,7 +189,7 @@ size_t osusat_slog_pending_count(void);
  *
  * Example:
  * @code
- * osusat_slog(osusat_slog_WARN, EPS_BATTERY, "Voltage low: %dmV", voltage);
+ * OSUSAT_SLOG(OSUSAT_SLOG_WARN, EPS_BATTERY, "Voltage low: %dmV", voltage);
  * @endcode
  */
 #define OSUSAT_SLOG(level, component, fmt, ...)                                \

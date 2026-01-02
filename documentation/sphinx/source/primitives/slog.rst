@@ -1,4 +1,4 @@
-Event Bus
+Structured Logging
 ==========================
 
 .. doxygengroup:: osusat_slog
