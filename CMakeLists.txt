@@ -127,3 +127,36 @@ if (DOXYGEN_FOUND)
             DEPENDS core_doxygen core_sphinx)
     endif()
 endif()
+
+option(BUILD_TESTING "Build the testing tree" ON)
+
+if(BUILD_TESTING)
+    enable_testing()
+
+    # discover all test files
+    file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.c")
+
+    foreach(TEST_SOURCE ${TEST_SOURCES})
+        # extract test name from filename (e.g., test_ring_buffer.c -> test_ring_buffer)
+        get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
+
+        add_executable(${TEST_NAME} ${TEST_SOURCE})
+
+        target_link_libraries(${TEST_NAME} PRIVATE osusat-core)
+
+        add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+
+        set_tests_properties(${TEST_NAME} PROPERTIES
+            TIMEOUT 10
+            LABELS "unit"
+        )
+    endforeach()
+
+    message(STATUS "testing enabled - found ${CMAKE_MATCH_COUNT} test files")
+
+    add_custom_target(test_verbose
+        COMMAND ${CMAKE_CTEST_COMMAND} --verbose --output-on-failure
+        DEPENDS ${TEST_SOURCES}
+        COMMENT "Running all tests with verbose output"
+    )
+endif()
