@@ -78,6 +78,7 @@ typedef uint32_t osusat_event_id_t;
 typedef enum {
     SYSTEM_SYSTICK = 1, /**< Periodic heartbeat (e.g. 100Hz) */
     SYSTEM_INIT_DONE,   /**< All services initialized */
+    SYSTEM_HEARTBEAT    /**< Heartbeat event for health monitoring */
 } osusat_system_code_t;
 
 #define EVENT_SYSTICK                                                          \
