@@ -33,7 +33,7 @@ extern "C" {
  * @brief Max payload size in bytes.
  * Kept small (8 bytes) to fit primitives (double, uint64_t) or pointers.
  */
-#define OSUSAT_EVENT_MAX_PAYLOAD 8
+#define OSUSAT_EVENT_MAX_PAYLOAD 32
 
 /**
  * @brief Maximum number of active subscriptions allowed system-wide.
