@@ -39,7 +39,7 @@ extern "C" {
  * @brief Maximum number of active subscriptions allowed system-wide.
  * Adjust based on RAM constraints.
  */
-#define OSUSAT_EVENT_MAX_SUBSCRIBERS 32
+#define OSUSAT_EVENT_MAX_SUBSCRIBERS 128
 
 /**
  * @brief Event Identifier Type (32-bit).
